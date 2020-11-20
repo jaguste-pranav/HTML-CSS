@@ -1,0 +1,31 @@
+body 
+{
+    display: flex;
+    flex-wrap: wrap;   
+}
+.card 
+{
+    flex: 0 0 200px;
+    margin: 10px;
+    border: 1px solid rgb(29, 25, 25);
+    box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+    background-color: rgb(202, 225, 226);
+}   
+img 
+{
+    max-width: 100%;
+}  
+.text 
+{
+    padding: 0 20px 20px;
+}
+button 
+{
+    background: rgb(241, 236, 236);
+    border: 1px solid black;
+    color: rgb(28, 40, 104);
+    padding: 20px;
+    width: 100%;
+    font-weight: bolder;
+    font-size: 100%;
+}

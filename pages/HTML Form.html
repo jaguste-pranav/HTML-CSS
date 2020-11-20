@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic input types</title>
+    <link rel="stylesheet" href="../css/html_form.css">
+ 
+</head>
+<body>
+    <header class="headerContainer">
+        <h1>User Registration Form</h1>
+    </header>
+    <form>
+        <div>
+            <label for="text">Name</label>
+            <input type="text" id="text" name="text" required>
+            <error-output class="text-error" for="text"></error-output>
+        </div>
+        <div>
+            <label for="pwd">Password</label>
+            <input type="password" id="pwd" name="pwd" required>
+            <error-output class="password-error" for="pwd"></error-output>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <error-output class="email-error" for="email"></error-output>
+        </div>
+        <div>
+            <label for="address">Address</label>
+            <input type="address" id="address" name="adress" required>
+        </div>
+        <div>
+            <label for="tel">Phone No</label>
+            <input type="tel" id="tel" name="tel" required>
+            <error-output class="phone-error" for="tel"></error-output>
+        </div>       
+        <div class="nativeDateTimePicker">
+            <label for="DOB">Date Of Birth</label>
+            <input type="date" id="DOB" name="DOB" required>
+        </div>
+        <div>
+            <label for="salary">Monthly Salary</label>
+            <input type="range" name="salary" id="salary" min="10000" max="50000" step="500" value="30000">
+            <output class="salary-output" for="salary">400000</output>
+        </div>
+        <div>
+            <button>Submit</button>
+        </div>
+    </form>
+    <script>
+         
+         const text=document.querySelector('#text');
+         const textError=document.querySelector('.text-error');
+         text.addEventListener('input', function(){
+             let namRegex= new RegExp(/^[A-Z][a-z]{2,}$/);
+             if(namRegex.test(text.value))
+              textError.textContent="";
+              else
+              textError.textContent="Name is not valid";
+         })
+
+         const password=document.querySelector('#pwd');
+         const password_error=document.querySelector('.password-error');
+         password.addEventListener('input', function(){
+             let passRegex= new RegExp(/^(?=.*[A-Z])(?=.*[0-9])(?=^[a-zA-Z0-9]*[!@#$%^&*()][a-zA-Z0-9]*$).{8,}$/);
+             if(passRegex.test(password.value))
+              password_error.textContent="";
+              else
+              password_error.textContent="Password is not valid";
+         })
+
+         const email=document.querySelector('#email');
+         const email_error=document.querySelector('.email-error');
+         email.addEventListener('input', function(){
+             let emailRegex= new RegExp(/^[a-z0-9A-Z]+([._+-][a-z0-9A-Z]+)?[@][a-z0-9A-Z]+[.][a-zA-Z]{2,3}(.[a-zA-Z]{2})?$/);
+             if(emailRegex.test(email.value))
+              email_error.textContent="";
+              else
+              email_error.textContent="Email is not valid";
+         })
+
+         const phone=document.querySelector('#tel');
+         const phone_error=document.querySelector('.phone-error');
+         phone.addEventListener('input', function(){
+             let phoneRegex= new RegExp(/^[1-9][0-9]{1,2}[ ][1-9][0-9]{9}$/);
+             if(phoneRegex.test(phone.value))
+             phone_error.textContent="";
+              else
+              phone_error.textContent="Phone No is not valid";
+         })
+  
+         const salary=document.querySelector('#salary');
+         const output=document.querySelector('.salary-output');
+         output.textContent=salary.value;
+         salary.addEventListener('input',function(){
+             output.textContent=salary.value;
+         })
+         
+    </script>
+</body>
+</html>
